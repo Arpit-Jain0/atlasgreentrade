@@ -70,7 +70,7 @@ export function ProductsSection() {
           className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 text-balance">
-            What We Make
+            What We Offer
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty">
             Four core categories across metals, plastics, paper, and secondary coils.

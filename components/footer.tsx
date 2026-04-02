@@ -60,6 +60,13 @@ export function Footer() {
               <Link href="/contact" className="block text-background/80 hover:text-primary transition-colors">
                 Contact
               </Link>
+              <a
+                href="/atlas-brochure.pdf"
+                download
+                className="block text-background/80 hover:text-primary transition-colors"
+              >
+                Download Brochure
+              </a>
             </div>
           </div>
 
@@ -67,12 +74,10 @@ export function Footer() {
           <div>
             <h3 className="font-bold text-lg mb-6">Our Products</h3>
             <div className="space-y-3">
-             <div className="text-background/80">Ferrous and Non-Ferrous</div>
+              <div className="text-background/80">Ferrous and Non-Ferrous</div>
               <div className="text-background/80">Paper & Cardboard</div>
               <div className="text-background/80">Secondary Coils</div>
-              <div className="text-background/80">Plastics & Polymers</div>
-              
-       
+              <div className="text-background/80">Plastics & Polymers</div>       
             </div>
           </div>
         </div>

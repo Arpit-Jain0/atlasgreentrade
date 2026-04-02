@@ -64,7 +64,7 @@ const productCategories = [
     description: "Premium scrap metals for recycling and industrial applications",
     color: "bg-gray-500",
     products: [
-      { name: "Steel Scrap", image: "/wip.png" },
+      { name: "Work In Progress", image: "/wip.png" },
      
     ],
   }
@@ -169,11 +169,18 @@ export function ProductCategories() {
       className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
       onClick={() => setZoomedImage(product.image)}
     >
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-      />
+      <div className="flex flex-col">
+  <img
+    src={product.image}
+    alt={product.name}
+    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-lg"
+  />
+  <div className="bg-white dark:bg-gray-900 text-center py-2 rounded-b-lg">
+    <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+      {product.name}
+    </span>
+  </div>
+</div>
       {/* Optional: Hover overlay */}
       {/* <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
         <span className="text-white text-lg font-semibold">{product.name}</span>

@@ -8,7 +8,7 @@ import { Toaster } from "sonner"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "ATLAS GREENTRADE - Global Leaders in Recyclable Raw Materials",
+  title: "ATLAS GREENTRADE - Trusted Partners in Recyclable Raw Materials",
   description:
     "ATLAS GREENTRADE is a versatile and proactive partner in the trade of recyclable, prime, and non-prime raw materials. We deal in Plastics, Rubber, Paper, Metals, Oleo chemicals, and Fertilizers.",
   keywords:
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   publisher: "ATLAS GREENTRADE",
   robots: "index, follow",
   openGraph: {
-    title: "ATLAS GREENTRADE - Global Leaders in Recyclable Raw Materials",
+    title: "ATLAS GREENTRADE - Trusted Partners in Recyclable Raw Materials",
     description:
       "Serving with the power of recycling products. Your trusted partner for sustainable raw materials trading.",
     siteName: "ATLAS GREENTRADE",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ATLAS GREENTRADE - Global Leaders in Recyclable Raw Materials",
+    title: "ATLAS GREENTRADE - Trusted Partners in Recyclable Raw Materials",
     description:
       "Serving with the power of recycling products. Your trusted partner for sustainable raw materials trading.",
   },
