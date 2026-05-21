@@ -4,6 +4,7 @@ import { AboutHero } from "@/components/about-hero"
 import { CompanyOverview } from "@/components/company-overview"
 import { GlobalPresence } from "@/components/global-presence"
 import { Leadership } from "@/components/leadership"
+import { Certifications } from "@/components/certifications"
 
 
 export default function AboutPage() {
@@ -14,6 +15,7 @@ export default function AboutPage() {
       <CompanyOverview />
       <GlobalPresence />
       <Leadership />
+      <Certifications />
       <Footer />
     </main>
   )
