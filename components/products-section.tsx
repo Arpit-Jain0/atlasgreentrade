@@ -18,7 +18,7 @@ const tiles: ProductTile[] = [
     title: "Ferrous & Non-Ferrous",
     subtitle: "Steel, Copper, Aluminum, and other high-grade metal scrap",
     href: "/products?category=fnf",
-    image: "/ferrous_nonferrous.png",
+    image: "/Ferrous & Non Ferrous Metals/Alloys/Alloy 2.jpg",
   },
   {
     key: "plastics",
@@ -44,9 +44,9 @@ const tiles: ProductTile[] = [
   {
     key: "others",
     title: "Others",
-    subtitle: "New Solutions Coming Soon.",
+    subtitle: "Woods And Crude Glycerine",
     href: "/products?category=others",
-    image: "/wip.png",
+    image: "/Wood/Logs.jpg",
   },
 ]
 

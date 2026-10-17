@@ -8,15 +8,24 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">AV</span>
-              </div>
-              <div>
-                <div className="font-bold text-2xl">ATLAS GREENTRADE</div>
-                <div className="text-sm text-background/70">Recycling Excellence</div>
-              </div>
-            </div>
+          <div className="flex items-center mb-6">
+  <div className="w-20 h-20 bg-primary rounded-xl flex items-center justify-center p-2 shrink-0">
+    <img
+      src="/logo copy.png"
+      alt="Atlas Greentrade"
+      className="w-full h-full object-contain"
+    />
+  </div>
+
+  <div className="ml-4">
+    <div className="font-bold text-2xl">
+      ATLAS GREENTRADE
+    </div>
+    <div className="text-sm text-background/70">
+      Recycling Excellence
+    </div>
+  </div>
+</div>
             <p className="text-background/80 mb-6 max-w-md text-pretty">
               Serving with the power of recycling products. We are your versatile and proactive partner for sustainable
               raw materials trading worldwide.

@@ -1,135 +1,301 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Card, CardHeader, CardTitle } from "@/components/ui/card"
-import { X, Package, Factory, Recycle, Leaf, Droplets, Zap } from "lucide-react"
+import {
+  X,
+  Package,
+  Factory,
+  Shell,
+  Recycle,
+  PackageOpen,
+  type LucideIcon,
+} from "lucide-react"
 
-// Product data
-const productCategories = [
+type Product = {
+  name: string
+  image: string
+}
+
+type Subgroup = {
+  name: string
+  products: Product[]
+}
+
+type Category = {
+  id: string // used for the ?category= URL param
+  icon: LucideIcon
+  title: string
+  description: string
+  color: string
+  subgroups?: Subgroup[]
+  products?: Product[]
+}
+
+const productCategories: Category[] = [
   {
-    icon: Leaf,
+    id: "fnf",
+    icon: Factory,
     title: "Ferrous & Non-Ferrous",
-    description: "Steel, Copper, Aluminum, and other high-grade metal scrap",
+    description: "Steel, Aluminium, Copper and other high-grade metal scrap",
     color: "bg-green-500",
-    products: [
-      { name: "Butyl Tubes", image: "/ferrousnonferrous1.png" },
-      { name: "Crumb Rubber", image: "/ferrous_nonferrous.png" },
-      { name: "Butyl Tubes", image: "/home2.jpg" },
-      { name: "Crumb Rubber", image: "/fnf2.png" },
-      { name: "Butyl Tubes", image: "/fnf3.png" },
-      { name: "Crumb Rubber", image: "/fnf5.png" },
-      { name: "Butyl Tubes", image: "/fnf4.png" },
-      { name: "Crumb Rubber", image: "/fnf6.png" },],
+    subgroups: [
+      {
+        // The two duplicate "Alloys" subgroups are merged into one.
+        name: "Alloys",
+        products: [
+          { name: "", image: "/Ferrous & Non Ferrous Metals/Alloys/Alloy 1.jpg" },
+          { name: "", image: "/Ferrous & Non Ferrous Metals/Alloys/Alloy 2.jpg" },
+          { name: "", image: "/Ferrous & Non Ferrous Metals/Alloys/Alloy 3.jpg" },
+          { name: "", image: "/Ferrous & Non Ferrous Metals/Alloys/Alloy 4.jpg" },
+        ],
+      },
+      {
+        name: "SS (All Grades) ",
+        products: [
+          { name: "", image: "/Stainless Steel/Stainless Steel 1.png" },
+          { name: "", image: "/Stainless Steel/Stainless Steel 2.png" },
+          { name: "", image: "/Stainless Steel/Stainless Steel 3.png" },
+          { name: "", image: "/Stainless Steel/Stainless Steel 4.png" },
+          { name: "", image: "/Stainless Steel/Stainless Steel 5.png" },
+          { name: "", image: "/Stainless Steel/Stainless Steel 6.png" },
+          { name: "", image: "/Stainless Steel/Stainless Steel 7.png" },
+
+
+        ],
+      },
+      {
+        name: "Motors and Compressors",
+        products: [
+          { name: "", image: "/Motors and Compressors/Mixed motors 1.png" },
+          { name: "", image: "/Motors and Compressors/Mixed motors 2.png" },
+          { name: "", image: "/Motors and Compressors/Small black fridge compressor 1.png" },
+          { name: "", image: "/Motors and Compressors/Small black fridge compressor 2.png" },
+        ],
+      },
+      {
+        name: "Aluminium",
+        products: [
+          { name: "", image: "/Alluminium/Alluminium 1.png" },
+          { name: "", image: "/Alluminium/Alluminium 2.png" },
+          { name: "", image: "/Alluminium/Alluminium3.png" },
+          { name: "", image: "/Alluminium/Alluminium4.png" },
+
+        ],
+      },
+      
+    ],
   },
   {
-    icon: Recycle,
+    id: "paper",
+    icon: Package,
     title: "Paper & Cardboard",
     description: "Recyclable paper grades and stock lots",
     color: "bg-amber-500",
-    products: [
-      { name: "OCC Bales", image: "/pc1.png" },
-      { name: "Mixed Paper", image: "/pc2.png" },
-      { name: "Kraft Rolls", image: "/pc3.png" },
-      { name: "Tissue Stock", image: "/pc4.png" },
+    subgroups: [
+      {
+        name: "OCC",
+        products: [
+          { name: "", image: "/Paper/OCC.png" },
+       
+        ],
+      },
+      {
+        name: "Stock lot of Paper Rolls/Bales/Loose",
+        products: [
+          { name: "", image: "/Paper/Stock lot of Paper RollsBalesLoose - 1.png" },
+          { name: "", image: "/Paper/Stock lot of Paper RollsBalesLoose - 2.png" },
+          { name: "", image: "/Paper/Stock lot of Paper RollsBalesLoose - 3.png" },
+
+        ],
+      },
     ],
   },
-  
   {
-    icon: Droplets,
+    id: "secondary",
+    icon: Shell,
     title: "Secondary Coils",
     description: "Reprocessed and reusable materials for sustainable manufacturing",
     color: "bg-purple-500",
+    // No subgroups: shows products directly, no buttons.
     products: [
-      { name: "Crude Glycerin", image: "/sc11.png" },
-      { name: "Crude Glycerin", image: "/sc2.png" },
-
+     
+      { name: "", image: "/sc2.png" },
     ],
   },
   {
-    icon: Package,
+    id: "plastics",
+    icon: Recycle,
     title: "Plastics & Polymers",
     description: "Explore our range of recycled and virgin plastics",
     color: "bg-blue-500",
-    products: [
-      { name: "R-PET", image: "/plastic_products1.png" },
-      { name: "PET Flakes", image: "/plastic_products2.png" },
-      { name: "HDPE Regrind", image: "/plastic_products3.png" },
-      { name: "PP Granules", image: "/plastic_products4.png" },
+    subgroups: [
+      {
+        name: "PET",
+        products: [
+          { name: "", image: "Plastics/PET Family (1).png" },
+          { name: "", image: "Plastics/PET Family (2).png" },
+          { name: "", image: "Plastics/PET Family (3).png" },
+          { name: "", image: "Plastics/PET Family (4).png" },
+          { name: "", image: "Plastics/PET Family (5).png" },
+          { name: "", image: "Plastics/PET Family (6).png" },
+
+        ],
+      },
+      {
+        name: "LDPE",
+        products: [{ name: "", image: "Plastics/LDPE Family (1).png" },
+          { name: "", image: "Plastics/LDPE Family (2).png" },
+          { name: "", image: "Plastics/LDPE Family (3).png" },
+          { name: "", image: "Plastics/LDPE REPROCESSED.png" }
+        ],
+        
+      },
+      {
+        name: "HDPE",
+        products: [{ name: "", image: "Plastics/HDPE BOTTLES.png" },
+          { name: "", image: "Plastics/HDPE REGRIND.png" },
+         
+        ],
+      },
     ],
   },
   {
-    icon: Factory,
+    id: "others",
+    icon: PackageOpen,
     title: "Others",
     description: "Premium scrap metals for recycling and industrial applications",
     color: "bg-gray-500",
-    products: [
-      { name: "Work In Progress", image: "/wip.png" },
-     
+    subgroups: [
+      {
+        name: "Crude Glycerin",
+        products: [{ name: "", image: "/Crude Glycerine.png" }],
+      },
+      {
+        name: "Wood",
+        products: [{ name: "", image: "Wood/Logs.jpg" },
+          { name: "", image: "Wood/Lumber.jpg" },
+          
+        ],
+      },
     ],
-  }
- 
+  },
 ]
 
-export function ProductCategories() {
+// Full class names are written out so Tailwind can detect them.
+function getSubgroupGridCols(count: number) {
+  switch (count) {
+    case 1:
+      return "grid-cols-1"
+    case 2:
+      return "grid-cols-1 sm:grid-cols-2"
+    case 3:
+      return "grid-cols-1 sm:grid-cols-3"
+    case 4:
+      return "grid-cols-2 sm:grid-cols-4"
+    default:
+      return "grid-cols-2 sm:grid-cols-3" // 5+ wrap in rows of 3
+  }
+}
+
+function ProductCategoriesContent() {
   const [isVisible, setIsVisible] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState(0)
+  // Category and subgroup live in ONE state object so they always change together.
+  const [selection, setSelection] = useState({ category: 0, subgroup: 0 })
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
+
+  const sectionRef = useRef<HTMLElement>(null)
   const searchParams = useSearchParams()
 
-  // Handle ?category=
+  const selectCategory = (index: number) =>
+    setSelection({ category: index, subgroup: 0 })
+
+  const selectSubgroup = (index: number) =>
+    setSelection((prev) => ({ ...prev, subgroup: index }))
+
+  // Select a category from ?category=... in the URL
   useEffect(() => {
     const cat = searchParams?.get("category")
     if (!cat) return
+
     const key = cat.toLowerCase().trim()
-    const map: Record<string, number> = {
-      fnf: 0,
-      paper:1,
-      secondary: 2,
-      plastics: 3,
-      
-      
-      others: 4,
-      
-    }
-    const idx = map[key]
-    if (typeof idx === "number") {
-      setSelectedCategory(idx)
+    const idx = productCategories.findIndex((c) => c.id === key)
+
+    if (idx !== -1) {
+      selectCategory(idx)
       sectionRef.current?.scrollIntoView({ behavior: "smooth" })
     }
   }, [searchParams])
 
-  // Intersection animation
+  // Fade-in when the section scrolls into view
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setIsVisible(true)
-    }, { threshold: 0.1 })
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true)
+      },
+      { threshold: 0.1 }
+    )
+
     if (sectionRef.current) observer.observe(sectionRef.current)
     return () => observer.disconnect()
   }, [])
 
+  // Close the zoom modal with Escape
+  useEffect(() => {
+    if (!zoomedImage) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setZoomedImage(null)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [zoomedImage])
+
+  const selectedCategoryData = productCategories[selection.category]
+  const subgroups = selectedCategoryData.subgroups
+
+  // Clamp so a stale index can never point at a subgroup that doesn't exist.
+  const activeSubgroup =
+    subgroups && selection.subgroup < subgroups.length ? selection.subgroup : 0
+
+  const productsToShow: Product[] = subgroups
+    ? subgroups[activeSubgroup]?.products ?? []
+    : selectedCategoryData.products ?? []
+
+  const CategoryIcon = selectedCategoryData.icon
+
   return (
     <section ref={sectionRef} className="py-20 bg-muted/30 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">Product Categories</h2>
+        {/* Heading */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? "animate-fade-in-up" : "opacity-0"
+          }`}
+        >
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            Product Categories
+          </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            Explore our diverse product portfolio designed to promote recycling and sustainability.
+            Explore our diverse product portfolio designed to promote
+            recycling and sustainability.
           </p>
         </div>
 
-        {/* Category Tabs */}
-        <div className={`flex flex-wrap justify-center gap-4 mb-12 transition-all duration-1000 delay-200 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+        {/* Main Category Buttons */}
+        <div
+          className={`flex flex-wrap justify-center gap-4 mb-8 transition-all duration-1000 delay-200 ${
+            isVisible ? "animate-fade-in-up" : "opacity-0"
+          }`}
+        >
           {productCategories.map((category, index) => {
             const Icon = category.icon
             return (
               <button
-                key={category.title}
-                onClick={() => setSelectedCategory(index)}
+                key={category.id}
+                onClick={() => selectCategory(index)}
                 className={`flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-300 ${
-                  selectedCategory === index
+                  selection.category === index
                     ? "bg-primary text-primary-foreground shadow-lg"
                     : "bg-card text-card-foreground hover:bg-primary/10"
                 }`}
@@ -141,72 +307,115 @@ export function ProductCategories() {
           })}
         </div>
 
-        {/* Selected Category */}
+        {/* Main Product Container */}
         <Card className="p-8 shadow-lg">
-          <CardHeader className="flex items-center gap-4 mb-8">
+          {/* Category Header */}
+          <CardHeader className="flex items-center gap-4 mb-8 p-0">
             <div
-              className={`w-16 h-16 ${productCategories[selectedCategory].color} rounded-lg flex items-center justify-center`}
+              className={`w-16 h-16 ${selectedCategoryData.color} rounded-lg flex items-center justify-center shrink-0`}
             >
-              {(() => {
-                const Icon = productCategories[selectedCategory].icon
-                return <Icon className="h-8 w-8 text-white" />
-              })()}
+              <CategoryIcon className="h-8 w-8 text-white" />
             </div>
+
             <div>
-              <CardTitle className="text-2xl">{productCategories[selectedCategory].title}</CardTitle>
-              <p className="text-muted-foreground">{productCategories[selectedCategory].description}</p>
+              <CardTitle className="text-2xl">
+                {selectedCategoryData.title}
+              </CardTitle>
+              <p className="text-muted-foreground">
+                {selectedCategoryData.description}
+              </p>
             </div>
           </CardHeader>
 
-          {/* Image Grid */}
+          {/* Subgroup buttons: only rendered for categories that have subgroups.
+              The key includes the category id so the block fully remounts
+              when you switch categories (no leftover buttons). */}
+          {subgroups && subgroups.length > 0 && (
+            <div key={`subgroups-${selectedCategoryData.id}`} className="mb-8 w-full">
+              <div
+                className={`grid ${getSubgroupGridCols(subgroups.length)} gap-3 w-full`}
+              >
+                {subgroups.map((subgroup, index) => (
+                  <button
+                    key={`${selectedCategoryData.id}-${index}`}
+                    onClick={() => selectSubgroup(index)}
+                    className={`w-full min-h-[48px] px-4 py-3 rounded-lg border transition-all duration-300 ${
+                      activeSubgroup === index
+                        ? "bg-primary text-primary-foreground border-primary shadow-md"
+                        : "bg-muted/50 text-foreground border-border hover:bg-primary/10 hover:border-primary/40"
+                    }`}
+                  >
+                    <span className="font-medium">{subgroup.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Product Images */}
           <div
-  key={selectedCategory} // 👈 ensures a clean re-render when switching category
-  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
->
-  {productCategories[selectedCategory].products.map((product, index) => (
-    <div
-      key={`${product.name}-${index}`} // 👈 ensures unique key per item
-      className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-      onClick={() => setZoomedImage(product.image)}
-    >
-      <div className="flex flex-col">
-  <img
-    src={product.image}
-    alt={product.name}
-    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 rounded-t-lg"
-  />
-  <div className="bg-white dark:bg-gray-900 text-center py-2 rounded-b-lg">
-    <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-      {product.name}
-    </span>
-  </div>
-</div>
-      {/* Optional: Hover overlay */}
-      {/* <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-        <span className="text-white text-lg font-semibold">{product.name}</span>
-      </div> */}
-    </div>
-  ))}
-</div>
+            key={`${selectedCategoryData.id}-${activeSubgroup}`}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          >
+            {productsToShow.map((product, index) => (
+              <div
+                key={`${selectedCategoryData.id}-${activeSubgroup}-${index}`}
+                className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setZoomedImage(product.image)}
+              >
+                <div className="flex flex-col">
+                  <img
+                    src={encodeURI(product.image)}
+                    alt={product.name || selectedCategoryData.title}
+                    className={`w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500 ${
+                      product.name ? "rounded-t-lg" : "rounded-lg"
+                    }`}
+                  />
+
+                  {product.name && (
+                    <div className="bg-white dark:bg-gray-900 text-center py-3 rounded-b-lg">
+                      <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                        {product.name}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </Card>
       </div>
 
       {/* Image Zoom Modal */}
       {zoomedImage && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          onClick={() => setZoomedImage(null)}
+        >
           <button
             onClick={() => setZoomedImage(null)}
+            aria-label="Close"
             className="absolute top-6 right-6 text-white bg-black/60 p-2 rounded-full hover:bg-black/80 transition"
           >
             <X className="h-6 w-6" />
           </button>
+
           <img
-            src={zoomedImage}
+            src={encodeURI(zoomedImage)}
             alt="Zoomed product"
-            className="max-w-4xl max-h-[90vh] object-contain rounded-lg shadow-2xl transition-transform duration-300 scale-100"
+            className="max-w-4xl w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
     </section>
+  )
+}
+
+export function ProductCategories() {
+  return (
+    <Suspense fallback={null}>
+      <ProductCategoriesContent />
+    </Suspense>
   )
 }

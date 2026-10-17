@@ -6,7 +6,7 @@ const contactDetails = [
   {
     icon: MapPin,
     title: "Head Office Address",
-    content: "De Keyserlei 60C box 1301, 2018 Antwerp",
+    content: "De Keyserlei 60C box 1301, 2018 Antwerp, Belgium",
     color: "text-red-500",
   },
   {
@@ -25,8 +25,8 @@ const contactDetails = [
 ]
 
 const businessHours = [
-  { day: "Monday - Saturday", hours: "9:00 AM to 5:00 PM" },
-  { day: "Sunday", hours: "Closed" },
+  { day: "Monday - Friday", hours: "9:00 AM to 5:00 PM" },
+  { day: "Saturday - Sunday", hours: "Closed" },
 ]
 
 
