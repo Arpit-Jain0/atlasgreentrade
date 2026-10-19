@@ -52,7 +52,7 @@ const productCategories: Category[] = [
         ],
       },
       {
-        name: "SS (All Grades) ",
+        name: "Stainless Steel",
         products: [
           { name: "", image: "/Stainless Steel/Stainless Steel 1.png" },
           { name: "", image: "/Stainless Steel/Stainless Steel 2.png" },
@@ -165,7 +165,7 @@ const productCategories: Category[] = [
     id: "others",
     icon: PackageOpen,
     title: "Others",
-    description: "Premium scrap metals for recycling and industrial applications",
+    description: "Premium materials for Industrial Applications",
     color: "bg-gray-500",
     subgroups: [
       {
