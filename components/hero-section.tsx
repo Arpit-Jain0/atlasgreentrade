@@ -18,12 +18,12 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
     <img
-      src="/homepagebg.png"
+      src="/herobg.png"
       alt="ATLAS GREEN TRADE Facility"
       className="w-full h-full object-center object-cover brightness-75"
     />
     <div
-      className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent z-10"
+      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-15"
     />
   </div>
       

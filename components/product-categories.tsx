@@ -127,7 +127,7 @@ const productCategories: Category[] = [
   {
     id: "plastics",
     icon: Recycle,
-    title: "Plastics & Polymers",
+    title: "Plastics",
     description: "Explore our range of recycled and virgin plastics",
     color: "bg-blue-500",
     subgroups: [

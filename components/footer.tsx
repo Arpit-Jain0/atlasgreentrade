@@ -89,7 +89,8 @@ export function Footer() {
               <div className="text-background/80">Ferrous and Non-Ferrous</div>
               <div className="text-background/80">Paper & Cardboard</div>
               <div className="text-background/80">Secondary Coils</div>
-              <div className="text-background/80">Plastics & Polymers</div>       
+              <div className="text-background/80">Plastics</div>   
+              <div className="text-background/80">Others</div>        
             </div>
           </div>
         </div>

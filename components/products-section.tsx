@@ -25,7 +25,7 @@ const tiles: ProductTile[] = [
     title: "Plastics",
     subtitle: "R-PET, HDPE, LDPE, PP, and engineered plastic recyclables",
     href: "/products?category=plastics",
-    image: "/plastic.png",
+    image: "/Plastics/HDPE BOTTLES.png",
   },
   {
     key: "secondary",
