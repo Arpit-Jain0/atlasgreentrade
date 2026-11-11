@@ -273,10 +273,10 @@ function ProductCategoriesContent() {
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6 text-balance tracking-tight">
             Product Categories
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
             Explore our diverse product portfolio designed to promote
             recycling and sustainability.
           </p>

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   creator: "ATLAS GREENTRADE",
   publisher: "ATLAS GREENTRADE",
   robots: "index, follow",
+  icons: { icon: "/logo.png" },
   openGraph: {
     title: "ATLAS GREENTRADE - Trusted Partners in Recyclable Raw Materials",
     description:

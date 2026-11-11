@@ -15,8 +15,8 @@ export function ContactMap() {
     <section className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Visit Our Office</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6 text-balance tracking-tight">Visit Our Office</h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
             Located at De Keyserlei 60C box 1301, 2018 Antwerp, BELGIUM, our office is easily accessible for meetings and consultations
           </p>
         </div>

@@ -2,7 +2,8 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -25,6 +26,13 @@ export function ContactForm() {
   const documents = ["Company Brochure", "Product Catalog", "Quality Certificates", "Registration Documents"]
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Pre-select the product when arriving from a "Request a Quote" link
+  const searchParams = useSearchParams()
+  useEffect(() => {
+    const product = searchParams.get("product")
+    if (product) setFormData((prev) => ({ ...prev, product }))
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -74,12 +82,12 @@ export function ContactForm() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section id="contact-form" className="py-20 bg-background scroll-mt-24">
       <div className="space-y-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="hover-lift">
           <CardHeader>
-            <CardTitle className="text-2xl text-center">Send us a Message</CardTitle>
+            <CardTitle className="text-2xl text-center">Send Us a Message</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -134,7 +142,7 @@ export function ContactForm() {
 
               <div className="space-y-2">
                 <Label htmlFor="product">Product Interest</Label>
-                <Select onValueChange={(value) => handleChange("product", value)} disabled={isSubmitting}>
+                <Select value={formData.product} onValueChange={(value) => value && handleChange("product", value)} disabled={isSubmitting}>
                   <SelectTrigger className="bg-muted/50">
                     <SelectValue placeholder="Select product category" />
                   </SelectTrigger>

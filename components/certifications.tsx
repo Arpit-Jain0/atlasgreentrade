@@ -60,13 +60,18 @@ export function Certifications() {
   }, [])
 
   useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActivePdf(null)
+    }
     if (activePdf) {
       document.body.style.overflow = "hidden"
+      window.addEventListener("keydown", onKeyDown)
     } else {
       document.body.style.overflow = ""
     }
     return () => {
       document.body.style.overflow = ""
+      window.removeEventListener("keydown", onKeyDown)
     }
   }, [activePdf])
 
@@ -84,10 +89,10 @@ export function Certifications() {
               <Award className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6 text-balance tracking-tight">
             Certifications &amp; Compliance
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
             Atlas GreenTrade holds internationally recognised certifications that validate our commitment to quality,
             environmental responsibility, and occupational safety. Click any certificate below to view the full document.
           </p>

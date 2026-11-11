@@ -1,10 +1,8 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { AboutHero } from "@/components/about-hero"
-import { CompanyOverview } from "@/components/company-overview"
-import { GlobalPresence } from "@/components/global-presence"
+import { FounderVision } from "@/components/founder-vision"
 import { Leadership } from "@/components/leadership"
-import { Certifications } from "@/components/certifications"
 
 
 export default function AboutPage() {
@@ -12,10 +10,8 @@ export default function AboutPage() {
     <main className="min-h-screen">
       <Header />
       <AboutHero />
-      <CompanyOverview />
-      <GlobalPresence />
+      <FounderVision />
       <Leadership />
-      <Certifications />
       <Footer />
     </main>
   )

@@ -22,8 +22,8 @@ export function Header() {
           isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 px-4">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+        <div className="max-w-7xl mx-auto flex justify-center sm:justify-between items-center px-4 text-xs sm:text-base">
+          <div className="flex items-center gap-4 sm:gap-6">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
               <span>+32-491105135</span>
@@ -33,7 +33,7 @@ export function Header() {
               <span>info@atlasgreen.eu</span>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2">
             <Globe className="h-4 w-4" />
             <span>Serving Globally</span>
           </div>
@@ -98,6 +98,14 @@ export function Header() {
               Products
             </Link>
             <Link
+              href="/certifications"
+              className={`transition-colors ${
+                isScrolled ? "text-gray-800 hover:text-green-700" : "text-white hover:text-green-300"
+              }`}
+            >
+              Certifications
+            </Link>
+            <Link
               href="/contact"
               className={`transition-colors ${
                 isScrolled ? "text-gray-800 hover:text-green-700" : "text-white hover:text-green-300"
@@ -140,7 +148,7 @@ export function Header() {
                   isScrolled ? "text-gray-800" : "text-white"
                 } hover:text-green-500`}
               >
-                About
+                About Us
               </Link>
               <Link
                 href="/products"
@@ -149,6 +157,14 @@ export function Header() {
                 } hover:text-green-500`}
               >
                 Products
+              </Link>
+              <Link
+                href="/certifications"
+                className={`block transition-colors ${
+                  isScrolled ? "text-gray-800" : "text-white"
+                } hover:text-green-500`}
+              >
+                Certifications
               </Link>
               <Link
                 href="/contact"

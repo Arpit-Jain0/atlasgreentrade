@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Leaf, Target, Users, Lightbulb } from "lucide-react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Leaf, Target, Users, Lightbulb, ArrowRight } from "lucide-react"
 import { ImageCarousel } from "@/components/Imagecarousel"
 
 export function AboutSection() {
@@ -35,12 +37,21 @@ export function AboutSection() {
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6 text-balance tracking-tight">
             About ATLAS GREENTRADE
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty">
-            With over 15 years of specialized experience, ATLAS GREENTRADE is a trusted name in the recycling and chemical trading industry. We serve both niche and traditional markets with precision, integrity, and technical expertise.
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
+            Headquartered in Antwerp, Belgium, Atlas GreenTrade is an international trading and sourcing company specialising in recycled and secondary industrial raw materials. With over 15 years of specialised experience, we connect global suppliers with industrial buyers, backed by a global reach across 6 continents and partnerships in 50+ countries.
           </p>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed mt-4">
+            Our core business spans ferrous and non-ferrous metals, including stainless steel, alloy steel, aluminium, brass and lead, as well as motors, compressors, metal scrap, recyclable plastic materials and more. Guided by trust, integrity and professionalism, we deliver reliable sourcing solutions, quality-focused service and efficient trade coordination while building long-term business relationships.
+          </p>
+          <Button asChild size="lg" className="mt-6 sm:mt-8 text-base sm:text-lg px-6 sm:px-8">
+            <Link href="/about">
+              Know More
+              <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+            </Link>
+          </Button>
         </div>
 
         {/* Image & Description */}
@@ -63,7 +74,7 @@ export function AboutSection() {
               isVisible ? "animate-slide-in-right" : "opacity-0"
             }`}
           >
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 sm:mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 sm:mb-6 tracking-tight">
               Our Commitment to Sustainability
             </h3>
             <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 text-pretty">

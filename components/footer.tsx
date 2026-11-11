@@ -69,7 +69,7 @@ export function Footer() {
               <Link href="/contact" className="block text-background/80 hover:text-primary transition-colors">
                 Contact
               </Link>
-              <Link href="/about#certifications" className="block text-background/80 hover:text-primary transition-colors">
+              <Link href="/certifications" className="block text-background/80 hover:text-primary transition-colors">
                 Certifications
               </Link>
               <a
