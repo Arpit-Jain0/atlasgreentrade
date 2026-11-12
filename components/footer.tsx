@@ -4,12 +4,12 @@ import { MapPin, Phone, Mail, Globe } from "lucide-react"
 export function Footer() {
   return (
     <footer className="bg-foreground text-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2">
           <div className="flex items-center mb-6">
-  <div className="w-20 h-20 bg-primary rounded-xl flex items-center justify-center p-2 shrink-0">
+  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-xl flex items-center justify-center p-2 shrink-0">
     <img
       src="/logo copy.png"
       alt="Atlas Greentrade"
@@ -18,7 +18,7 @@ export function Footer() {
   </div>
 
   <div className="ml-4">
-    <div className="font-bold text-2xl">
+    <div className="font-bold text-xl sm:text-2xl">
       ATLAS GREENTRADE
     </div>
     <div className="text-sm text-background/70">
@@ -31,22 +31,22 @@ export function Footer() {
               raw materials trading worldwide.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-primary" />
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-background/80">De Keyserlei 60C box 1301, 2018 Antwerp, BELGIUM</span>
               </div>
               <a
                 href="tel:+32491105135"
                 className="flex items-center gap-3 text-background/80 hover:text-primary transition-colors"
               >
-                <Phone className="h-5 w-5 text-primary" />
+                <Phone className="h-5 w-5 text-primary shrink-0" />
                 <span>+32-491105135</span>
               </a>
               <a
                 href="mailto:info@atlasgreen.eu"
                 className="flex items-center gap-3 text-background/80 hover:text-primary transition-colors"
               >
-                <Mail className="h-5 w-5 text-primary" />
+                <Mail className="h-5 w-5 text-primary shrink-0" />
                 <span>info@atlasgreen.eu</span>
               </a>
              
@@ -55,7 +55,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Quick Links</h3>
+            <h3 className="font-bold text-lg mb-4 sm:mb-6">Quick Links</h3>
             <div className="space-y-3">
               <Link href="/" className="block text-background/80 hover:text-primary transition-colors">
                 Home
@@ -84,7 +84,7 @@ export function Footer() {
 
           {/* Products */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Our Products</h3>
+            <h3 className="font-bold text-lg mb-4 sm:mb-6">Our Products</h3>
             <div className="space-y-3">
               <div className="text-background/80">Ferrous and Non-Ferrous</div>
               <div className="text-background/80">Paper & Cardboard</div>
@@ -96,9 +96,9 @@ export function Footer() {
         </div>
 
         {/* Newsletter */}
-        <div className="border-t border-background/20 mt-12 pt-8">
+        <div className="border-t border-background/20 mt-10 sm:mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
+            <div className="text-center md:text-left">
               <h3 className="font-bold text-lg mb-2">Stay Updated</h3>
               <p className="text-background/80">Get the latest news about sustainable materials and recycling.</p>
             </div>
@@ -107,7 +107,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-background/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-background/60 text-sm">
+          <div className="text-background/60 text-sm text-center md:text-left">
             © 2025 Atlas GreenTrade. All Rights Reserved. Registered under the laws of BELGIUM.
           </div>
         </div>
@@ -116,7 +116,7 @@ export function Footer() {
         <div className="mt-8 p-4 bg-primary/10 rounded-lg">
           <p className="text-background/80 text-sm text-center">
             <strong>Important Notice:</strong> We do not change our bank details. Please contact customer service for
-            any banking inquiries.
+            any banking enquiries.
           </p>
         </div>
       </div>

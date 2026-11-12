@@ -12,9 +12,9 @@ export function ContactMap() {
   }
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-14 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6 text-balance tracking-tight">Visit Our Office</h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto text-pretty leading-relaxed">
             Located at De Keyserlei 60C box 1301, 2018 Antwerp, BELGIUM, our office is easily accessible for meetings and consultations
@@ -25,7 +25,7 @@ export function ContactMap() {
           <CardContent className="p-0">
             <div className="grid grid-cols-1 lg:grid-cols-3">
               {/* Map Placeholder */}
-              <div className="lg:col-span-2 h-96 bg-muted/30 flex items-center justify-center">
+              <div className="lg:col-span-2 h-72 sm:h-96 bg-muted/30 flex items-center justify-center">
                 
                   
                  
@@ -44,8 +44,8 @@ export function ContactMap() {
               </div>
 
               {/* Location Details */}
-              <div className="p-8 bg-muted/10">
-                <h3 className="text-2xl font-bold text-foreground mb-6">Location Details</h3>
+              <div className="p-5 sm:p-8 bg-muted/10">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Location Details</h3>
 
                 
                   <div>
@@ -55,7 +55,7 @@ export function ContactMap() {
                       <br />
                       De Keyserlei 60C box 1301
                       <br />
-                      2018 Antwer
+                      2018 Antwerp
                       <br />
                       BELGIUM
                     </p>

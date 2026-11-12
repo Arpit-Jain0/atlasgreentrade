@@ -265,11 +265,11 @@ function ProductCategoriesContent() {
   const CategoryIcon = selectedCategoryData.icon
 
   return (
-    <section ref={sectionRef} className="py-20 bg-muted/30 relative">
+    <section ref={sectionRef} className="py-14 sm:py-20 bg-muted/30 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-10 sm:mb-16 transition-all duration-1000 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
@@ -284,7 +284,7 @@ function ProductCategoriesContent() {
 
         {/* Main Category Buttons */}
         <div
-          className={`flex flex-wrap justify-center gap-4 mb-8 transition-all duration-1000 delay-200 ${
+          className={`grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-4 mb-8 transition-all duration-1000 delay-200 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
@@ -294,13 +294,13 @@ function ProductCategoriesContent() {
               <button
                 key={category.id}
                 onClick={() => selectCategory(index)}
-                className={`flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-300 ${
+                className={`flex items-center justify-center gap-2 sm:gap-3 px-3 sm:px-6 py-3 rounded-lg text-sm sm:text-base transition-all duration-300 last:odd:col-span-2 ${
                   selection.category === index
-                    ? "bg-primary text-primary-foreground shadow-lg"
-                    : "bg-card text-card-foreground hover:bg-primary/10"
+                    ? "bg-primary text-primary-foreground border border-primary shadow-lg"
+                    : "bg-card text-card-foreground border border-border hover:bg-primary/10 hover:border-primary/40"
                 }`}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5 shrink-0" />
                 <span className="font-medium">{category.title}</span>
               </button>
             )
@@ -308,9 +308,9 @@ function ProductCategoriesContent() {
         </div>
 
         {/* Main Product Container */}
-        <Card className="p-8 shadow-lg">
+        <Card className="p-4 sm:p-8 shadow-lg">
           {/* Category Header */}
-          <CardHeader className="flex items-center gap-4 mb-8 p-0">
+          <CardHeader className="flex flex-col sm:flex-row items-center text-center sm:text-left gap-3 sm:gap-4 mb-6 sm:mb-8 p-0">
             <div
               className={`w-16 h-16 ${selectedCategoryData.color} rounded-lg flex items-center justify-center shrink-0`}
             >
@@ -318,7 +318,7 @@ function ProductCategoriesContent() {
             </div>
 
             <div>
-              <CardTitle className="text-2xl">
+              <CardTitle className="text-xl sm:text-2xl mb-1">
                 {selectedCategoryData.title}
               </CardTitle>
               <p className="text-muted-foreground">

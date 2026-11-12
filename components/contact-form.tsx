@@ -82,14 +82,14 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact-form" className="py-20 bg-background scroll-mt-24">
+    <section id="contact-form" className="py-14 sm:py-20 bg-background scroll-mt-24">
       <div className="space-y-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="hover-lift">
-          <CardHeader>
-            <CardTitle className="text-2xl text-center">Send Us a Message</CardTitle>
+        <Card className="hover-lift py-0 gap-0">
+          <CardHeader className="px-5 sm:px-8 pt-6 sm:pt-8 pb-6">
+            <CardTitle className="text-xl sm:text-2xl font-bold text-foreground">Send Us a Message</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-5 sm:px-8 pb-6 sm:pb-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -143,7 +143,7 @@ export function ContactForm() {
               <div className="space-y-2">
                 <Label htmlFor="product">Product Interest</Label>
                 <Select value={formData.product} onValueChange={(value) => value && handleChange("product", value)} disabled={isSubmitting}>
-                  <SelectTrigger className="bg-muted/50">
+                  <SelectTrigger className="w-full bg-muted/50">
                     <SelectValue placeholder="Select product category" />
                   </SelectTrigger>
                   <SelectContent>

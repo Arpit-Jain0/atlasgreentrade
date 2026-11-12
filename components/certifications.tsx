@@ -76,11 +76,11 @@ export function Certifications() {
   }, [activePdf])
 
   return (
-    <section id="certifications" ref={sectionRef} className="py-20 bg-background">
+    <section id="certifications" ref={sectionRef} className="py-14 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-10 sm:mb-16 transition-all duration-1000 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
@@ -99,17 +99,17 @@ export function Certifications() {
         </div>
 
         {/* Certificate Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {certifications.map((cert, i) => (
             <Card
               key={cert.id}
-              className={`hover-lift cursor-pointer transition-all duration-1000 border-2 border-transparent hover:border-primary/30 ${
+              className={`hover-lift cursor-pointer py-0 gap-0 overflow-hidden transition-all duration-1000 border-2 border-transparent hover:border-primary/30 ${
                 isVisible ? "animate-scale-in" : "opacity-0"
               }`}
               style={{ animationDelay: `${i * 150}ms` }}
               onClick={() => setActivePdf({ title: cert.title, file: cert.file })}
             >
-              <CardContent className={`p-8 bg-gradient-to-br ${cert.color} rounded-lg h-full flex flex-col`}>
+              <CardContent className={`p-6 sm:p-8 bg-gradient-to-br ${cert.color} h-full flex flex-col`}>
                 <div className="flex items-start justify-between mb-4">
                   <div className={`w-14 h-14 bg-background rounded-xl flex items-center justify-center shadow-sm`}>
                     <cert.icon className={`h-7 w-7 ${cert.iconColor}`} />

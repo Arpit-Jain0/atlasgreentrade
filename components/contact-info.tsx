@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import { MapPin, Phone, Mail } from "lucide-react"
 
 const contactDetails = [
   {
@@ -32,13 +32,13 @@ const businessHours = [
 
 export function ContactInfo() {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-14 sm:py-20 bg-muted/30">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {/* Contact Details */}
-          <Card className="hover-lift">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-6">Contact Information</h3>
+          <Card className="hover-lift py-0">
+            <CardContent className="p-5 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6">Contact Information</h3>
               <div className="space-y-6">
                 {contactDetails.map((detail) => {
                   const Icon = detail.icon
@@ -59,17 +59,12 @@ export function ContactInfo() {
           </Card>
 
           {/* Business Hours */}
-          <Card className="hover-lift">
-            <CardContent className="p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Clock className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground">Business Hours</h3>
-              </div>
+          <Card className="hover-lift py-0">
+            <CardContent className="p-5 sm:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-6">Business Hours</h3>
               <div className="space-y-3">
                 {businessHours.map((schedule) => (
-                  <div key={schedule.day} className="flex justify-between items-center">
+                  <div key={schedule.day} className="flex justify-between items-center gap-4">
                     <span className="text-muted-foreground">{schedule.day}</span>
                     <Badge variant="secondary">{schedule.hours}</Badge>
                   </div>

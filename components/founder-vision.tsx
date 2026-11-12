@@ -39,11 +39,11 @@ export function FounderVision() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 bg-background">
+    <section ref={sectionRef} className="py-14 sm:py-20 bg-background">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Founder's Thoughts */}
         <div
-          className={`text-center mb-12 transition-all duration-1000 ${
+          className={`text-center mb-8 sm:mb-12 transition-all duration-1000 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
@@ -60,17 +60,17 @@ export function FounderVision() {
         </div>
 
         <div
-          className={`space-y-6 text-lg text-muted-foreground leading-relaxed text-pretty transition-all duration-1000 delay-200 ${
+          className={`space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed text-pretty transition-all duration-1000 delay-200 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
-          <p>
+          <p className="text-center">
             The world&apos;s natural resources are under growing pressure. At{" "}
             <span className="font-semibold text-primary">Atlas GreenTrade</span>, we believe recycling is essential to
             reducing emissions, conserving resources and building a more sustainable industrial future.
           </p>
 
-          <div className="border-l-4 border-primary bg-primary/5 rounded-r-lg p-6">
+          <div className="border-l-4 border-primary bg-primary/5 rounded-r-lg p-5 sm:p-6">
             <p>
               According to the United Nations Environment Programme (UNEP), resource extraction and processing account
               for <span className="font-bold text-foreground">over 55% of global greenhouse gas emissions</span>.
@@ -81,14 +81,14 @@ export function FounderVision() {
 
         {/* Why recycling matters */}
         <div
-          className={`mt-12 transition-all duration-1000 delay-300 ${
+          className={`mt-10 sm:mt-12 transition-all duration-1000 delay-300 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
-          <h3 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8 tracking-tight">Why Recycling Matters</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h3 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-6 sm:mb-8 tracking-tight">Why Recycling Matters</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {reasons.map(({ icon: Icon, title, text }) => (
-              <Card key={title} className="hover-lift">
+              <Card key={title} className="hover-lift py-0">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <Icon className="h-6 w-6 text-primary" />
@@ -102,7 +102,7 @@ export function FounderVision() {
         </div>
 
         <p
-          className={`mt-12 text-lg text-muted-foreground leading-relaxed text-center text-pretty max-w-3xl mx-auto transition-all duration-1000 delay-400 ${
+          className={`mt-10 sm:mt-12 text-base sm:text-lg text-muted-foreground leading-relaxed text-center text-pretty max-w-3xl mx-auto transition-all duration-1000 delay-400 ${
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
@@ -112,7 +112,7 @@ export function FounderVision() {
         </p>
 
         {/* Vision & Mission */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-14 sm:mt-20">
           {[
             {
               icon: Target,
@@ -127,16 +127,16 @@ export function FounderVision() {
           ].map(({ icon: Icon, title, text }) => (
             <Card
               key={title}
-              className={`hover-lift transition-all duration-1000 delay-500 ${
+              className={`hover-lift py-0 transition-all duration-1000 delay-500 ${
                 isVisible ? "animate-scale-in" : "opacity-0"
               }`}
             >
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Icon className="h-8 w-8 text-primary" />
+              <CardContent className="p-6 sm:p-8 text-center">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                  <Icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">{title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed text-pretty">{text}</p>
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">{title}</h3>
+                <p className="text-muted-foreground text-base sm:text-lg leading-relaxed text-pretty">{text}</p>
               </CardContent>
             </Card>
           ))}

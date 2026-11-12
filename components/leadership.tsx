@@ -21,7 +21,7 @@ export function Leadership() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 bg-muted/30">
+    <section ref={sectionRef} className="py-14 sm:py-20 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Our Core Values */}
         <div
@@ -29,11 +29,11 @@ export function Leadership() {
             isVisible ? "animate-fade-in-up" : "opacity-0"
           }`}
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance tracking-tight">Our Core Values</h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
             {[
               { icon: Shield, title: "Integrity", text: "Transparent and ethical business practices" },
               { icon: BadgeCheck, title: "Quality", text: "Focus on material specifications and consistency" },
@@ -42,11 +42,11 @@ export function Leadership() {
               { icon: Handshake, title: "Partnership", text: "Building lasting relationships with suppliers and customers" },
               { icon: Scale, title: "Compliance", text: "Respecting applicable trade and regulatory requirements" },
             ].map((item, i) => (
-              <Card key={i} className="hover-lift">
-                <CardContent className="p-8 text-center">
-                  <item.icon className="h-10 w-10 text-primary mx-auto mb-4" />
-                  <h4 className="text-xl font-bold text-foreground mb-3 tracking-tight">{item.title}</h4>
-                  <p className="text-muted-foreground leading-relaxed">{item.text}</p>
+              <Card key={i} className="hover-lift py-0">
+                <CardContent className="p-4 sm:p-8 text-center">
+                  <item.icon className="h-8 w-8 sm:h-10 sm:w-10 text-primary mx-auto mb-3 sm:mb-4" />
+                  <h4 className="text-base sm:text-xl font-bold text-foreground mb-2 sm:mb-3 tracking-tight">{item.title}</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{item.text}</p>
                 </CardContent>
               </Card>
             ))}
